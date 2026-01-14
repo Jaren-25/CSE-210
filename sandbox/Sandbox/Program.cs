@@ -1,9 +1,20 @@
 using System;
 
-class Program
+namespace Sandbox
 {
-    static void Main(string[] args)
+    public class Program
     {
-        Console.WriteLine("Hello Sandbox World!");
+        public static void Main()
+        {
+            //Console.WriteLine("Hello World");
+
+            int x = 5;
+            // int, string, bool, double
+            Console.WriteLine("value of x is " + x);
+
+            Console.Write("question");
+            string color = Console.ReadLine();
+
+        }
     }
 }
