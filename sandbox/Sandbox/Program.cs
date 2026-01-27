@@ -6,6 +6,21 @@ namespace Sandbox
     {
         public static void Main()
         {
+            // Console.WriteLine("Hello World");
+
+            // Counter myCounter = new Counter();
+            // myCounter.Run();
+
+            Message m1 = new Message();
+            m1._message = "Send help!";
+            m1._priority = 1;
+            Console.WriteLine(m1.GetMessage());
+
+            Message m2 = new Message();
+            m2._message = "Pick up carrots";
+            m2._priority = 3;
+            Console.WriteLine(m2.GetMessage());
+
             // int i = 0;
             // while(i < 5)
             // {
@@ -38,17 +53,17 @@ namespace Sandbox
             //         Console.WriteLine("That's not in the list");
             //     }
 
-    static string TitleCase(string sentence)
-            {
-                string upper = sentence.ToUpper();
-                //chara = sentence.ToCharArray();
-                return upper;
-            }
+            // static string TitleCase(string sentence)
+            //         {
+            //             string upper = sentence.ToUpper();
+            //             //chara = sentence.ToCharArray();
+            //             return upper;
+            //         }
 
-            Console.Write("Enter a sentence: ");
-            string sentence = Console.ReadLine();
-            string upper = TitleCase(sentence);
-            Console.WriteLine(upper);
+            //         Console.Write("Enter a sentence: ");
+            //         string sentence = Console.ReadLine();
+            //         string upper = TitleCase(sentence);
+            //         Console.WriteLine(upper);
 
 
             //Console.WriteLine("Hello World");
