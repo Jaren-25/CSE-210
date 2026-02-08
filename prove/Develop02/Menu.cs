@@ -1,8 +1,12 @@
 public class Menu
 {
+    public List<Entry> entries = new List<Entry>();
     public void DisplayMenu()
     {
         int response = 0;
+        // string today = "";
+        // string entryResponse = "";
+        // string prompt = "";
 
         while(response != 5)
         {
@@ -19,24 +23,27 @@ public class Menu
             if (response == 1)
             {
                 Entry entry = new Entry();
-                entry.PromptGen();
+                (entry._date, entry._response, entry._prompt, entry._name) = entry.PromptGen();
+                entries.Add(entry);
             }
 
             if (response == 2)
             {
                 Display display = new Display();
-                display.ReadFile();
+                display.ReadFile(entries);
             }
 
             if (response == 3)
             {
                 Load load = new Load();
+                load.LoadFile(entries);
             }
 
             if (response == 4)
             {
                 Save save = new Save();
-                //save.SaveFile();
+
+                save.SaveFile(entries);
             }
         }
     }

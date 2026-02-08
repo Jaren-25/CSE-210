@@ -1,21 +1,22 @@
 public class Display
 {
-    public void ReadFile()
+    public void ReadFile(List<Entry> entries)
     {
-        string filename = "Journal.txt";
+        //no other path would work
+        string filename = "C:/Users/Jaren/OneDrive - BYU-Idaho/CSE-210/prove/Develop02/Journal.txt";
         string[] lines = System.IO.File.ReadAllLines(filename);
 
-        foreach (string line in lines)
+        foreach (Entry entry in entries)
         {
-            string[] parts = line.Split("|");
+            // string[] parts = line.Split("|");
 
-            string date = parts[0];
-            string entry = parts[1];
+            // string prompt = parts[0];
+            // string date = parts[1];
+            // string entry = parts[2];
+
+            Console.WriteLine($"Date: {entry._date} Name: {entry._name}- Prompt: {entry._prompt}");
+            Console.WriteLine($"Entry: {entry._response}");
+
         }
-    }
-
-    static void DisplayEntry()
-    {
-        Console.WriteLine();
     }
 }

@@ -1,15 +1,19 @@
 using System.IO;
 public class Save
 {
-    public static void SaveFile(string today, string response)
+
+    public void SaveFile(List<Entry> entries)
     {
-        string filename = "Journal.txt";
+        //no other path would work
+        string filename = "C:/Users/Jaren/OneDrive - BYU-Idaho/CSE-210/prove/Develop02/Journal.txt";
 
         using (StreamWriter outputfile = new StreamWriter(filename))
         {
-            outputfile.WriteLine("AAAAAAAA");
-            outputfile.WriteLine(today);
-            outputfile.WriteLine(response);
+            foreach (Entry entry in entries)
+            {
+                outputfile.Write($"Date: {entry._date} Name: {entry._name} Prompt: {entry._prompt}");
+                outputfile.WriteLine($" Entry: {entry._response} |");
+            }
         }
     }
 }
