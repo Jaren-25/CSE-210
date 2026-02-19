@@ -1,6 +1,6 @@
 public class Menu
 {
-    public List<Entry> entries = new List<Entry>();
+    public List<Journal> entries = new List<Journal>();
     public void DisplayMenu()
     {
         int response = 0;
@@ -22,26 +22,26 @@ public class Menu
 
             if (response == 1)
             {
-                Entry entry = new Entry();
+                Journal entry = new Journal();
                 (entry._date, entry._response, entry._prompt, entry._name) = entry.PromptGen();
                 entries.Add(entry);
             }
 
             if (response == 2)
             {
-                Display display = new Display();
+                Journal display = new Journal();
                 display.ReadFile(entries);
             }
 
             if (response == 3)
             {
-                Load load = new Load();
+                Journal load = new Journal();
                 load.LoadFile(entries);
             }
 
             if (response == 4)
             {
-                Save save = new Save();
+                Journal save = new Journal();
 
                 save.SaveFile(entries);
             }
