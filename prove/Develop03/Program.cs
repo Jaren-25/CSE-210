@@ -21,8 +21,8 @@ class Program
         while (userInput != "quit" /*| word.GetRandWordList().Count < word.SplitWords(word.GetVerse()).Length*/)
         {
 
-            Console.WriteLine($"location count: {word.GetRandWordList().Count}");
-            Console.WriteLine($"string length: {word.SplitWords(word.GetVerse()).Length}");
+            //Console.WriteLine($"location count: {word.GetRandWordList().Count}");
+            //Console.WriteLine($"string length: {word.SplitWords(word.GetVerse()).Length}");
 
             Console.WriteLine("Press enter to continue or type 'quit' to end: ");
             userInput = Console.ReadLine();
