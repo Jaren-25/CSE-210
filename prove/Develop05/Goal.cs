@@ -34,20 +34,11 @@ public class Goal
         return _x;
     }
 
-    // public void setName(string name)
-    // {
-    //     _name = name;
-    // }
-    // public void setDescription(string desription)
-    // {
-    //     _description = desription;
-    // }
-
 
     public virtual int scorePoints()
     {
-        Console.WriteLine("yat");
-        Console.WriteLine($"{_isFinished}..");
+        // Console.WriteLine("yat");
+        // Console.WriteLine($"{_isFinished}..");
         if (_isFinished != true)
         {
             _totalPoints = _totalPoints + _goalPoints;

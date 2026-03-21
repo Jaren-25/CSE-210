@@ -16,8 +16,8 @@ class GoalFileManager:Goal
         using(StreamWriter writer = new StreamWriter(_filename))
         {
 
-            Console.WriteLine("point");
-            Console.WriteLine($"{_totalPoints}??");
+            // Console.WriteLine("point");
+            // Console.WriteLine($"{_totalPoints}??");
 
             int totalscore = 0;
             foreach(Goal goal1 in goals)

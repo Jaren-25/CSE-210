@@ -1,8 +1,9 @@
+using System.ComponentModel;
+
 class Program
 {
     static void Main(string[] args)
     {
-        //Console.WriteLine("Hello Develop05 World!");
         string filename = "goals.txt";
 
         int input = 0;
@@ -18,14 +19,21 @@ class Program
         List<ChecklistGoal> checklistGoals = new List<ChecklistGoal>();
 
 
-
         while(input != 6)
         {
-
             int totalscore = 0;
             foreach(Goal goal1 in goals)
             {
                 totalscore += goal1.GetTotalPoints();
+            }
+
+            if (totalscore >= 1000)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else if(totalscore >= 100)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
             }
 
             Console.WriteLine();
@@ -44,7 +52,6 @@ class Program
             Console.Write("Select a choice from the menu: ");
             string userInput = Console.ReadLine();
             input = int.Parse(userInput);
-
 
 
             switch (input)
@@ -121,7 +128,6 @@ class Program
                             Console.WriteLine("Enter a valid input ");
                             break;
                     }
-
                     break;
                 case 2:
                     //list goals
@@ -160,7 +166,6 @@ class Program
                         Console.Write($"{eventnum}. ");
                         goal.Display();
                         eventnum++;
-
                     }
 
                     Console.Write("Select a goal: ");
@@ -170,13 +175,11 @@ class Program
                     Goal chosen = goals[choice - 1];
 
                     //Console.WriteLine(chosen.getChosen());
-                    Console.WriteLine($"goal points: {chosen.GetPoints()}");
-                    Console.WriteLine($"total points: {chosen.GetTotalPoints()}");
+                    //Console.WriteLine($"goal points: {chosen.GetPoints()}");
+                    //Console.WriteLine($"total points: {chosen.GetTotalPoints()}");
 
                     chosen.scorePoints();
-                    Console.WriteLine($"total points: {chosen.GetTotalPoints()}");
-
-
+                    //Console.WriteLine($"total points: {chosen.GetTotalPoints()}");
                     break;
 
                 case 6:
@@ -184,8 +187,5 @@ class Program
                     break;
             }
         }
-
-
-
     }
 }
