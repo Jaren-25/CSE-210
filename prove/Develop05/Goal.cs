@@ -1,22 +1,25 @@
-public abstract class Goal
+public class Goal
 {
     protected int _totalPoints;
     protected int _goalPoints;
     protected string _name;
     protected string _description;
+    protected bool _isFinished;
+    protected string _x = "";
 
 
-    // public Goal(int point, string name, string desription)
-    // {
-    //     _point = point;
-    //     _name = name;
-    //     _description = desription;
-    // }
-
-    public abstract void scorePoints();
-
-    public abstract void Display();
-
+    public string Complete()
+    {
+        if(_isFinished == true)
+        {
+            _x = "X";
+        }
+        else
+        {
+            _x = " ";
+        }
+        return _x;
+    }
 
     public void setName(string name)
     {
@@ -31,6 +34,25 @@ public abstract class Goal
         _goalPoints = goalPoints;
     }
 
-    public abstract string Serialize();
+    public virtual int scorePoints()
+    {
+        if (_isFinished == true)
+        {
+            _totalPoints = _totalPoints + _goalPoints;
+        }
+
+        return _totalPoints;
+    }
+
+    public virtual void Display()
+    {
+        Console.WriteLine($"[{_x}] {_name} ({_description})");
+    }
+
+    public virtual string Serialize()
+    {
+        return $"type|{_name}|{_description}|{_goalPoints}|{_isFinished}";
+
+    }
 
 }

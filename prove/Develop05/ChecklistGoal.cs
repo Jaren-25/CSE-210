@@ -3,14 +3,14 @@ public class ChecklistGoal : Goal
     private int _loopAmt;
     private int _amtLooped;
     private int _bonusPoint;
-    private bool _isFinished;
+
 
     public ChecklistGoal()
     {
 
     }
 
-    public ChecklistGoal(int loopAmt, int amtLooped, int bonusPoint, bool isFinished, int totalPoints, string name, string desription)
+    public ChecklistGoal(int loopAmt, int amtLooped, int bonusPoint, bool isFinished, string name, string desription, int totalPoints)
     {
         _loopAmt = loopAmt;
         _amtLooped = amtLooped;
@@ -21,7 +21,7 @@ public class ChecklistGoal : Goal
         _description = desription;
     }
 
-    public override void scorePoints()
+    public override int scorePoints()
     {
         if (_isFinished == true)
         {
@@ -32,15 +32,18 @@ public class ChecklistGoal : Goal
         {
             _totalPoints = _totalPoints + _bonusPoint;
         }
+
+        return _totalPoints;
     }
 
     public override void Display()
     {
-        Console.WriteLine($"");
+        Console.WriteLine($"[{_x}] {_name} ({_description}) -- Currently completed: {_amtLooped}/{_loopAmt}");
+
     }
 
     public override string Serialize()
     {
-        return $"{_name}|{_description}|{_goalPoints}";
+        return $"checklist|{_name}|{_description}|{_goalPoints}|{_isFinished}";
     }
 }

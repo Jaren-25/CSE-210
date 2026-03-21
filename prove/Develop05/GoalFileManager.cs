@@ -1,4 +1,4 @@
-class GoalFileManager
+class GoalFileManager:Goal
 {
     private string _filename;
     private GoalParser _parser;
@@ -13,6 +13,7 @@ class GoalFileManager
     {
         using(StreamWriter writer = new StreamWriter(_filename))
         {
+            writer.WriteLine(_totalPoints);
             foreach (Goal goal in goals)
             {
                 writer.WriteLine(goal.Serialize());

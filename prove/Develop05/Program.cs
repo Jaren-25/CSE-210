@@ -6,8 +6,22 @@ class Program
     static void Main(string[] args)
     {
         //Console.WriteLine("Hello Develop05 World!");
+        string filename = "goals.txt";
 
         int input = 0;
+        SimpleGoal simpleGoal = new SimpleGoal();
+        EternalGoal eternalGoal = new EternalGoal();
+        ChecklistGoal checklistGoal = new ChecklistGoal();
+
+        GoalFileManager goalFileManager = new GoalFileManager(filename);
+        List<Goal> goals = goalFileManager.Load();
+
+        List<SimpleGoal> simpleGoals = new List<SimpleGoal>();
+        List<EternalGoal> eternalGoals = new List<EternalGoal>();
+        List<ChecklistGoal> checklistGoals = new List<ChecklistGoal>();
+
+
+
 
         while(input != 6)
         {
@@ -24,14 +38,6 @@ class Program
             string userInput = Console.ReadLine();
             input = int.Parse(userInput);
 
-            string filename = "goals.txt";
-            SimpleGoal simpleGoal = new SimpleGoal();
-            EternalGoal eternalGoal = new EternalGoal();
-            ChecklistGoal checklistGoal = new ChecklistGoal();
-
-            GoalFileManager goalFileManager = new GoalFileManager(filename);
-            List<Goal> goals = goalFileManager.Load();
-
 
 
             switch (input)
@@ -45,7 +51,7 @@ class Program
                     Console.WriteLine(" 2. Eternal Goal");
                     Console.WriteLine(" 3. Checklist Goal");
 
-                    Console.Write("Select a goal type the menu: ");
+                    Console.Write("Select a goal type from the menu: ");
                     string goalInput = Console.ReadLine();
                     goalType = int.Parse(goalInput);
 
@@ -63,32 +69,41 @@ class Program
                     {
                         case 1:
                             //simple goal
-                            List<SimpleGoal> simpleGoals = new List<SimpleGoal>
+                            simpleGoals = new List<SimpleGoal>
                             {
                                 //bool isFinished, string name, string desription, int goalPoints
                                 new SimpleGoal(false, name, description, points)
                             };
-
                             goals.AddRange(simpleGoals);
 
                             break;
 
                         case 2:
                             //eternal goal
-                            List<EternalGoal> eternalGoals = new List<EternalGoal>
+                            eternalGoals = new List<EternalGoal>
                             {
-                                new EternalGoal()
+                                //bool isFinished, string name, string description, int goalPoints
+                                new EternalGoal(false, name, description, points)
                             };
-
                             goals.AddRange(eternalGoals);
 
                             break;
 
                         case 3:
                             //check list goal
-                            List<ChecklistGoal> checklistGoals = new List<ChecklistGoal>
+
+                            Console.Write("How many times will you do it?: ");
+                            string loopInput = Console.ReadLine();
+                            int loop = int.Parse(loopInput);
+
+                            Console.Write("How many bonus points: ");
+                            string bonusInput = Console.ReadLine();
+                            int bonus = int.Parse(bonusInput);
+
+                            checklistGoals = new List<ChecklistGoal>
                             {
-                                new ChecklistGoal()
+                                //int loopAmt, int amtLooped, int bonusPoint, bool isFinished, int totalPoints, string name, string desription
+                                new ChecklistGoal(loop, 0, bonus, false, name, description, points)
                             };
                             break;
 
@@ -100,24 +115,48 @@ class Program
                     break;
                 case 2:
                     //list goals
+                    int listnum = 1;
+                    foreach(SimpleGoal goal in simpleGoals)
+                    {
+                        Console.Write($"{listnum}. ");
+                        goal.Display();
+                        listnum++;
+                    }
+                    foreach(EternalGoal goal in eternalGoals)
+                    {
+                        Console.Write($"{listnum}. ");
+                        goal.Display();
+                        listnum++;
+                    }
+                    foreach(ChecklistGoal goal in checklistGoals)
+                    {
+                        Console.Write($"{listnum}. ");
+                        goal.Display();
+                        listnum++;
+                    }
 
                     break;
 
                 case 3:
                     //save goals
+
                     goalFileManager.Save(goals);
                     break;
 
                 case 4:
                     //load goals
+                    int loadnum =  1;
                     foreach(Goal goal in goals)
                     {
+                        Console.Write($"{loadnum}. ");
                         goal.Display();
+                        loadnum++;
                     }
                     break;
 
                 case 5:
                     //record event
+
                     break;
 
                 case 6:

@@ -1,8 +1,5 @@
 public class SimpleGoal : Goal
 {
-    private bool _isFinished;
-
-    string x = "";
 
     public SimpleGoal()
     {
@@ -16,28 +13,18 @@ public class SimpleGoal : Goal
         _goalPoints = goalPoints;
     }
 
-    public override void scorePoints()
+    public override int scorePoints()
     {
         if (_isFinished == true)
         {
             _totalPoints = _totalPoints + _goalPoints;
         }
+        return _totalPoints;
     }
-    public string Complete()
-    {
-        if(_isFinished == true)
-        {
-            x = "X";
-        }
-        else
-        {
-            x = " ";
-        }
-        return x;
-    }
+
     public override void Display()
     {
-        Console.WriteLine($"[{x}]{_name} ({_description})");
+        Console.WriteLine($"[{_x}] {_name} ({_description})");
     }
 
     public override string Serialize()

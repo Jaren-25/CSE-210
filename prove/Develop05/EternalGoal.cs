@@ -1,23 +1,30 @@
 public class EternalGoal : Goal
 {
-    private string PH;
     public EternalGoal()
     {
 
     }
 
-    public override void scorePoints()
+    public EternalGoal(bool isFinished, string name, string description, int goalPoints)
     {
+        _isFinished = isFinished;
+        _name = name;
+        _description = description;
+        _goalPoints = goalPoints;
+    }
 
+    public override int scorePoints()
+    {
+        return _totalPoints;
     }
 
     public override void Display()
     {
-        Console.WriteLine($"");
+        Console.WriteLine($"[{_x}] {_name} ({_description})");
     }
 
     public override string Serialize()
     {
-        return $"{_name}|{_description}|{_goalPoints}";
+        return $"eternal|{_name}|{_description}|{_goalPoints}|{_isFinished}";
     }
 }
