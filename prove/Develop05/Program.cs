@@ -1,6 +1,3 @@
-using System;
-using System.Linq.Expressions;
-
 class Program
 {
     static void Main(string[] args)
@@ -22,9 +19,19 @@ class Program
 
 
 
-
         while(input != 6)
         {
+
+            int totalscore = 0;
+            foreach(Goal goal1 in goals)
+            {
+                totalscore += goal1.GetTotalPoints();
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"You have {totalscore} points!");
+            Console.WriteLine();
+
             Console.WriteLine("Menu Options:");
             Console.WriteLine(" 1. Create new goal");
             Console.WriteLine(" 2. List goals");
@@ -105,6 +112,9 @@ class Program
                                 //int loopAmt, int amtLooped, int bonusPoint, bool isFinished, int totalPoints, string name, string desription
                                 new ChecklistGoal(loop, 0, bonus, false, name, description, points)
                             };
+
+                            goals.AddRange(checklistGoals);
+
                             break;
 
                         default:
@@ -116,30 +126,16 @@ class Program
                 case 2:
                     //list goals
                     int listnum = 1;
-                    foreach(SimpleGoal goal in simpleGoals)
+                    foreach(Goal goal in goals)
                     {
                         Console.Write($"{listnum}. ");
                         goal.Display();
                         listnum++;
                     }
-                    foreach(EternalGoal goal in eternalGoals)
-                    {
-                        Console.Write($"{listnum}. ");
-                        goal.Display();
-                        listnum++;
-                    }
-                    foreach(ChecklistGoal goal in checklistGoals)
-                    {
-                        Console.Write($"{listnum}. ");
-                        goal.Display();
-                        listnum++;
-                    }
-
                     break;
 
                 case 3:
                     //save goals
-
                     goalFileManager.Save(goals);
                     break;
 
@@ -156,6 +152,30 @@ class Program
 
                 case 5:
                     //record event
+                    int eventnum = 1;
+                    int choice = 0;
+
+                    foreach(Goal goal in goals)
+                    {
+                        Console.Write($"{eventnum}. ");
+                        goal.Display();
+                        eventnum++;
+
+                    }
+
+                    Console.Write("Select a goal: ");
+                    string user = Console.ReadLine();
+                    choice = int.Parse(user);
+
+                    Goal chosen = goals[choice - 1];
+
+                    //Console.WriteLine(chosen.getChosen());
+                    Console.WriteLine($"goal points: {chosen.GetPoints()}");
+                    Console.WriteLine($"total points: {chosen.GetTotalPoints()}");
+
+                    chosen.scorePoints();
+                    Console.WriteLine($"total points: {chosen.GetTotalPoints()}");
+
 
                     break;
 

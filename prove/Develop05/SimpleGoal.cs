@@ -13,19 +13,11 @@ public class SimpleGoal : Goal
         _goalPoints = goalPoints;
     }
 
-    public override int scorePoints()
-    {
-        if (_isFinished == true)
-        {
-            _totalPoints = _totalPoints + _goalPoints;
-        }
-        return _totalPoints;
-    }
 
-    public override void Display()
-    {
-        Console.WriteLine($"[{_x}] {_name} ({_description})");
-    }
+    // public void Display();
+    // // {
+    // //     //Console.WriteLine($"[{Complete()}] {_name} ({_description})");
+    // // }
 
     public override string Serialize()
     {

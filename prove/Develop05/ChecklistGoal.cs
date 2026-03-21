@@ -38,12 +38,12 @@ public class ChecklistGoal : Goal
 
     public override void Display()
     {
-        Console.WriteLine($"[{_x}] {_name} ({_description}) -- Currently completed: {_amtLooped}/{_loopAmt}");
+        Console.WriteLine($"[{Complete()}] {_name} ({_description}) -- Currently completed: {_amtLooped}/{_loopAmt}");
 
     }
 
     public override string Serialize()
     {
-        return $"checklist|{_name}|{_description}|{_goalPoints}|{_isFinished}";
+        return $"checklist|{_name}|{_description}|{_goalPoints}|{_isFinished}|{_loopAmt}|{_amtLooped}|{_bonusPoint}";
     }
 }

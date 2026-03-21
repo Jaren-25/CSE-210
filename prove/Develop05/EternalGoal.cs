@@ -18,10 +18,10 @@ public class EternalGoal : Goal
         return _totalPoints;
     }
 
-    public override void Display()
-    {
-        Console.WriteLine($"[{_x}] {_name} ({_description})");
-    }
+    // public override void Display()
+    // {
+    //     //Console.WriteLine($"[{Complete()}] {_name} ({_description})");
+    // }
 
     public override string Serialize()
     {

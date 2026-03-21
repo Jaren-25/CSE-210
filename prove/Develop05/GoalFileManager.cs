@@ -4,22 +4,36 @@ class GoalFileManager:Goal
     private GoalParser _parser;
 
 
+
     public GoalFileManager(string filename)
     {
         _filename = filename;
         _parser = new GoalParser();
     }
+
     public void Save(List<Goal> goals)
     {
         using(StreamWriter writer = new StreamWriter(_filename))
         {
-            writer.WriteLine(_totalPoints);
+
+            Console.WriteLine("point");
+            Console.WriteLine($"{_totalPoints}??");
+
+            int totalscore = 0;
+            foreach(Goal goal1 in goals)
+            {
+                totalscore += goal1.GetTotalPoints();
+            }
+            writer.WriteLine($"{totalscore}|");
+
             foreach (Goal goal in goals)
             {
                 writer.WriteLine(goal.Serialize());
             }
         }
     }
+
+
 
     public List<Goal> Load()
     {
