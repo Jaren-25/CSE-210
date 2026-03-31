@@ -1,0 +1,76 @@
+public class Order
+{
+    private string _packingLabel;
+    private string _shippingLabel;
+    private double _shippingPrice;
+    private double _totalPrice;
+    private List<Product> _products = new List<Product>();
+
+    public Order()
+    {
+
+    }
+
+     public double CalcCountryPrice(string country)
+    {
+        if(country == "USA")
+        {
+            _shippingPrice = 5;
+            return _shippingPrice;
+        }
+        else
+        {
+            return _shippingPrice = 35;
+        }
+    }
+
+    public void AddProduct(Product product)
+    {
+        _products.AddRange(product);
+    }
+
+    public double GetTotalPrice()
+    {
+        foreach(Product product in _products)
+        {
+            _totalPrice += product.GetProductPrice();
+        }
+        return _totalPrice + _shippingPrice;
+    }
+
+    public void DisplayPackingLabel()
+    {
+        foreach(Product product in _products)
+        {
+            Console.WriteLine($"{product.GetName()} : {product.GetId()}");
+        }
+    }
+
+    public string GetPackingLabel()
+    {
+        return _packingLabel;
+    }
+
+    public void SetPackingLabel(string name, string id)
+    {
+        foreach(Product product in _products)
+        {
+            _packingLabel = $"{product.GetName()} : {product.GetId()}";
+        }
+    }
+
+    public void SetPackingLabels(string name, string id)
+    {
+        _packingLabel = $"{name} : {id}";
+    }
+
+    public string GetShippingLabel()
+    {
+        return _shippingLabel;
+    }
+
+    public void SetShippingLabel(string name, string address)
+    {
+        _shippingLabel = $"{name} \n{address}";
+    }
+}
