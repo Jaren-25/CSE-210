@@ -16,11 +16,8 @@ class Program
         order.SetShippingLabel(customer.GetName(), address.GetAddress());
         order.CalcCountryPrice(address.GetCountry());
 
-        order.DisplayPackingLabel();
-        Console.WriteLine();
-        Console.WriteLine($"{order.GetShippingLabel()}\n");
-        Console.WriteLine($"${order.GetTotalPrice()}\n\n");
 
+        order.Display();
 
         Order order1 = new Order();
         Product product2 = new Product("234-A", "Pencil", 5.00, 3);
@@ -39,11 +36,8 @@ class Program
         order1.SetShippingLabel(customer1.GetName(), address1.GetAddress());
         order1.CalcCountryPrice(address1.GetCountry());
 
-        order1.DisplayPackingLabel();
-        Console.WriteLine();
-        Console.WriteLine($"{order1.GetShippingLabel()}\n");
-        Console.WriteLine($"${order1.GetTotalPrice()}\n\n");
 
+        order1.Display();
 
     }
 }
