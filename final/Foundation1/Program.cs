@@ -2,38 +2,47 @@ class Program
 {
     static void Main(string[] args)
     {
-        Video video = new Video();
 
-        Video v1 = new("t1", "a1", 1.1);
-        v1.AddComment(new Comment("ca1", "text1"));
-        v1.AddComment(new Comment("ca2", "text2"));
-        v1.AddComment(new Comment("ca3", "text3"));
-        v1.AddComment(new Comment("ca4", "text4"));
+        List<Video> videos = new();
 
-        Video v2 = new("t2", "a2", 2.1);
-        v2.AddComment(new Comment("ca5", "text5"));
-        v2.AddComment(new Comment("ca6", "text6"));
-        v2.AddComment(new Comment("ca7", "text7"));
-        v2.AddComment(new Comment("ca8", "text8"));
 
-        Video v3 = new("t3", "a3", 3.1);
-        v3.AddComment(new Comment("ca9", "text9"));
-        v3.AddComment(new Comment("ca10", "text10"));
-        v3.AddComment(new Comment("ca11", "text11"));
-        v3.AddComment(new Comment("ca12", "text12"));
+        // Video video = new Video();
+        List<Comment> comments1 = new List<Comment>();
+        Video v1 = new("t1", "a1", 1.1, comments1);
+        comments1.AddRange(new Comment("ca1", "text1"));
+        comments1.AddRange(new Comment("ca2", "text2"));
+        comments1.AddRange(new Comment("ca3", "text3"));
+        comments1.AddRange(new Comment("ca4", "text4"));
 
-        Video v4 = new("t4", "a4", 4.1);
-        v4.AddComment(new Comment("ca13", "text13"));
-        v4.AddComment(new Comment("ca14", "text14"));
-        v4.AddComment(new Comment("ca15", "text15"));
-        v4.AddComment(new Comment("ca16", "text16"));
 
-        video.AddVideo(v1);
-        video.AddVideo(v2);
-        video.AddVideo(v3);
-        video.AddVideo(v4);
 
-        foreach(Video vid in video.GetVideos())
+        List<Comment> comments2 = new List<Comment>();
+        Video v2 = new("t2", "a2", 2.1, comments2);
+        comments2.AddRange(new Comment("ca5", "text5"));
+        comments2.AddRange(new Comment("ca6", "text6"));
+        comments2.AddRange(new Comment("ca7", "text7"));
+        comments2.AddRange(new Comment("ca8", "text8"));
+
+        List<Comment> comments3 = new List<Comment>();
+        Video v3 = new("t3", "a3", 3.1, comments3);
+        comments3.AddRange(new Comment("ca9", "text9"));
+        comments3.AddRange(new Comment("ca10", "text10"));
+        comments3.AddRange(new Comment("ca11", "text11"));
+        comments3.AddRange(new Comment("ca12", "text12"));
+
+        List<Comment> comments4 = new List<Comment>();
+        Video v4 = new("t4", "a4", 4.1, comments4);
+        comments4.AddRange(new Comment("ca13", "text13"));
+        comments4.AddRange(new Comment("ca14", "text14"));
+        comments4.AddRange(new Comment("ca15", "text15"));
+        comments4.AddRange(new Comment("ca16", "text16"));
+
+        videos.Add(v1);
+        videos.Add(v2);
+        videos.Add(v3);
+        videos.Add(v4);
+
+        foreach(Video vid in videos)
         {
             Console.WriteLine(vid.DisplayVideo());
 
