@@ -38,15 +38,6 @@ public class Order
         return _totalPrice + _shippingPrice;
     }
 
-    public string PackingLabel()
-    {
-        foreach(Product product in _products)
-        {
-            return $"{product.GetName()} : {product.GetId()}";
-        }
-        return null;
-    }
-
     public void SetPackingLabel(string name, string id)
     {
         foreach(Product product in _products)
@@ -67,6 +58,10 @@ public class Order
 
     public void Display()
     {
-        Console.WriteLine($"{PackingLabel()}\n{GetShippingLabel()}\n{GetTotalPrice()}\n\n");
+        foreach(Product product in _products)
+        {
+            Console.WriteLine($"{product.GetName()} : {product.GetId()}");
+        }
+        Console.WriteLine($"{GetShippingLabel()}\n{GetTotalPrice()}\n\n");
     }
 }
