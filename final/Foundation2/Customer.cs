@@ -9,6 +9,11 @@ public class Customer
         _address = address;
     }
 
+    public bool isUSA()
+    {
+        return _address.isUSA();
+    }
+
     public string GetName()
     {
         return _name;

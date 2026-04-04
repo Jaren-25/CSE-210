@@ -5,15 +5,16 @@ public class Order
     private double _shippingPrice;
     private double _totalPrice;
     private List<Product> _products = new List<Product>();
+    private Customer _customer;
 
-    public Order()
+    public Order(Customer customer)
     {
-
+        _customer = customer;
     }
 
-     public double CalcCountryPrice(string country)
+     public double CalcCountryPrice()
     {
-        if(country == "USA")
+        if(_customer.isUSA() == true)
         {
             _shippingPrice = 5;
             return _shippingPrice;
@@ -31,6 +32,7 @@ public class Order
 
     public double GetTotalPrice()
     {
+        CalcCountryPrice();
         foreach(Product product in _products)
         {
             _totalPrice += product.GetProductPrice();
