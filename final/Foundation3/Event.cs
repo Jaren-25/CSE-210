@@ -24,11 +24,11 @@ public class Event
 
     public virtual void FullDisplay()
     {
-        Console.WriteLine($"Full:\n({_type}) {_title} - {_description} on {_date}  at {_time} \n{_address.GetAddress()} (name & capacity/rsvp email/weather)");
+        Console.WriteLine($"Full:\n({GetType()}) {_title} - {_description} on {_date}  at {_time} \n{_address.GetAddress()} (name & capacity/rsvp email/weather)");
     }
 
     public void ShortDisplay()
     {
-        Console.WriteLine($"Short:\n{_type} {_title} on {_date}");
+        Console.WriteLine($"Short:\n{GetType()} {_title} on {_date}");
     }
 }
